@@ -1,12 +1,13 @@
 {
-  "name": "great-bay-basic",
+  "name": "employee-tracker-cms",
   "version": "1.0.0",
-  "description": "activity for demonstrating inquirer with mysql",
+  "description": "As a business owner I want to be able to view and manage the departments, roles, and employees in my company So that I can organize and plan my business",
   "main": "employee.js",
   "dependencies": {
-    "inquirer": "^6.5.2",
+    "inquirer": "^7.3.3",
     "mysql": "^2.18.1"
   },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
