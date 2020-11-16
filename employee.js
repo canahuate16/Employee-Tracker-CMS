@@ -33,8 +33,8 @@ function start() {
       "View all Employees By Department",
       "View All Employees by Manager",
       "Add Employee",
-      "Add Employee Role",
-      "Add Department",
+      "Update Employee Role",
+      "Update Department",
       "Remove Employee",
       "Update Employee Role",
       "Update Employee Manager",
@@ -47,11 +47,11 @@ function start() {
       case "Add Employee":
         addEmployee();
         break;
-      case "Add Employee Role":
-        addEmployeeRole();
+      case "Update Employee Role":
+        updateEmployeeRole();
         break;
-      case "Add Department":
-        addDepartment();
+      case "Update Department":
+        updateDepartment();
         break;
       case "View All Employees":
         viewAllEmployees();
@@ -110,5 +110,62 @@ function addEmployee() {
       );
     });
 }
+
+    // function viewAllEmployees(){
+    //     connection.query ("SELECT * FROM employee", function (err,results){
+    //         if (err) throw err;
+    //         inquirer
+    //         .prompt ([
+    //             {
+    //                 name: "employee",
+    //                 type: "rawlist",
+    //                 employees: function(){
+    //                     var employeeArray = [];
+    //                     for (let i = 0; i < results.length; i++) {
+    //                          employeeArray.push( results[i].first_name);
+                            
+    //                     }
+    //                     return employeeArray;
+    //                 },
+    //                 message: "Select an employee"
+    //             },
+    //         ])
+    //         .then(function(answer) {
+    //             // get the information of the chosen employe
+    //             let selectedEmployee;
+    //             for (var i = 0; i < results.length; i++) {
+    //               if (results[i].first_name === answer.employee) {
+    //                 selectedEmployee = results[i];
+    //               }
+    //             }
+              
+       
+    //         connection.query(
+    //           "UPDATE employee SET ? WHERE ?",
+    //           [
+    //             {
+    //               highest_bid: answer.bid
+    //             },
+    //             {
+    //               id: chosenItem.id
+    //             }
+    //           ],
+    //           function(error) {
+    //             if (error) throw err;
+    //             console.log("Bid placed successfully!");
+    //             start();
+    //           }
+    //         );
+          
+    //       else {
+    //         // bid wasn't high enough, so apologize and start over
+    //         console.log("Your bid was too low. Try again...");
+    //         start();
+    //       }
+    //     });
+
+    //     })
+    // }
+
 
 start();
