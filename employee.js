@@ -39,34 +39,76 @@ function start() {
       "Update Employee Role",
       "Update Employee Manager",
     ],
-  })
-  .then((choice) => {
+  }).then((choice) => {
     // if (choice.user_choice === "Add Employee") {
     //     addEmployee();
     // }
-    switch (choice.user_choice){
-        case 'Add Employee':
-            addEmployee()
-            break;
-        case "Add Employee Role":
-            addEmployeeRole()
-            break;
-        case 'Add Department':
-            addDepartment()
-            break;
-        case  "View All Employees":
-            viewAllEmployees()
-            break;
-        case "View all Employees By Department":
-            viewByDept()
-            break;
-        case "View All Employees by Manager":
-            viewByManager()
-            break;
-        case  "Update Employee Role":
-            updateRole()
-            break;
+    switch (choice.user_choice) {
+      case "Add Employee":
+        addEmployee();
+        break;
+      case "Add Employee Role":
+        addEmployeeRole();
+        break;
+      case "Add Department":
+        addDepartment();
+        break;
+      case "View All Employees":
+        viewAllEmployees();
+        break;
+      case "View all Employees By Department":
+        viewByDept();
+        break;
+      case "View All Employees by Manager":
+        viewByManager();
+        break;
+      case "Update Employee Role":
+        updateRole();
+        break;
     }
-  })
+  });
 }
 
+function addEmployee() {
+  inquirer
+    .prompt([
+      {
+        name: "first_name",
+        type: "input",
+        message: "What is the employee's first name?",
+      },
+      {
+        name: "last_name",
+        type: "input",
+        message: "What is the employee's last name?",
+      },
+      {
+        name: "employee_role",
+        type: "type",
+        message: "What is the employee's role?",
+      },
+      {
+        name: "manager_id",
+        type: "input",
+        message: "what is the employee's manager ID?",
+      },
+    ])
+    .then((answer) => {
+      connection.query(
+        "INSERT INTO employee SET ?",
+        {
+          first_name: answer.first_name,
+          last_name: answer.last_name,
+          role_id: answer.employee_role,
+          manager_id: answer.manager_id,
+        },
+        function (err) {
+          if (err) throw err;
+          console.log("Employee was added");
+          start();
+        }
+      );
+    });
+}
+
+start();
