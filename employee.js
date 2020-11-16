@@ -112,125 +112,119 @@ function addEmployee() {
 }
 //Add employee role
 function addEmployeeRole() {
-    inquirer
-      .prompt([
+  inquirer
+    .prompt([
+      {
+        name: "title",
+        type: "input",
+        message: "What role are you adding?",
+      },
+      {
+        name: "salary",
+        type: "input",
+        message: "What is the salary for this role?",
+      },
+      {
+        name: "dept_id",
+        type: "type",
+        message: "What is the department ID?",
+      },
+    ])
+    .then((answer) => {
+      connection.query(
+        "INSERT INTO role SET ?",
         {
-          name: "title",
-          type: "input",
-          message: "What role are you adding?",
+          title: answer.title,
+          salary: answer.salary,
+          dept_id: answer.dept_id,
         },
-        {
-          name: "salary",
-          type: "input",
-          message: "What is the salary for this role?",
-        },
-        {
-          name: "dept_id",
-          type: "type",
-          message: "What is the department ID?",
-        },
-    
-      ])
-      .then((answer) => {
-        connection.query(
-          "INSERT INTO role SET ?",
-          {
-            title: answer.title,
-            salary: answer.salary,
-            dept_id: answer.dept_id,
-            
-          },
-          function (err) {
-            if (err) throw err;
-            console.log("Role was added");
-            start();
-          }
-        );
-      });
+        function (err) {
+          if (err) throw err;
+          console.log("Role was added");
+          start();
+        }
+      );
+    });
+}
 //add department
 
-      function addDepartment() {
-    inquirer
-      .prompt([
+function addDepartment() {
+  inquirer
+    .prompt([
+      {
+        name: "dept_name",
+        type: "input",
+        message: "What is the department's name?",
+      },
+    ])
+    .then((answer) => {
+      connection.query(
+        "INSERT INTO department SET ?",
         {
-          name: "dept_name",
-          type: "input",
-          message: "What is the department's name?",
+          dept_name: answer.dept_name,
         },
-        
-    
-      ])
-      .then((answer) => {
-        connection.query(
-          "INSERT INTO department SET ?",
-          {
-            dept_name: answer.dept_name,
-            
-          },
-          function (err) {
-            if (err) throw err;
-            console.log("Department was added");
-            start();
-          }
-        );
-      });
-    
+        function (err) {
+          if (err) throw err;
+          console.log("Department was added");
+          start();
+        }
+      );
+    });
+}
 
-    // function viewAllEmployees(){
-    //     connection.query ("SELECT * FROM employee", function (err,results){
-    //         if (err) throw err;
-    //         inquirer
-    //         .prompt ([
-    //             {
-    //                 name: "employee",
-    //                 type: "rawlist",
-    //                 employees: function(){
-    //                     var employeeArray = [];
-    //                     for (let i = 0; i < results.length; i++) {
-    //                          employeeArray.push( results[i].first_name);
-                            
-    //                     }
-    //                     return employeeArray;
-    //                 },
-    //                 message: "Select an employee"
-    //             },
-    //         ])
-    //         .then(function(answer) {
-    //             // get the information of the chosen employe
-    //             let selectedEmployee;
-    //             for (var i = 0; i < results.length; i++) {
-    //               if (results[i].first_name === answer.employee) {
-    //                 selectedEmployee = results[i];
-    //               }
-    //             }
-              
-       
-    //         connection.query(
-    //           "UPDATE employee SET ? WHERE ?",
-    //           [
-    //             {
-    //               highest_bid: answer.bid
-    //             },
-    //             {
-    //               id: chosenItem.id
-    //             }
-    //           ],
-    //           function(error) {
-    //             if (error) throw err;
-    //             console.log("Bid placed successfully!");
-    //             start();
-    //           }
-    //         );
-          
-    //       else {
-    //         // bid wasn't high enough, so apologize and start over
-    //         console.log("Your bid was too low. Try again...");
-    //         start();
-    //       }
-    //     });
+// function viewAllEmployees(){
+//     connection.query ("SELECT * FROM employee", function (err,results){
+//         if (err) throw err;
+//         inquirer
+//         .prompt ([
+//             {
+//                 name: "employee",
+//                 type: "rawlist",
+//                 employees: function(){
+//                     var employeeArray = [];
+//                     for (let i = 0; i < results.length; i++) {
+//                          employeeArray.push( results[i].first_name);
 
-    //     })
-    // }
+//                     }
+//                     return employeeArray;
+//                 },
+//                 message: "Select an employee"
+//             },
+//         ])
+//         .then(function(answer) {
+//             // get the information of the chosen employe
+//             let selectedEmployee;
+//             for (var i = 0; i < results.length; i++) {
+//               if (results[i].first_name === answer.employee) {
+//                 selectedEmployee = results[i];
+//               }
+//             }
 
+//         connection.query(
+//           "UPDATE employee SET ? WHERE ?",
+//           [
+//             {
+//               highest_bid: answer.bid
+//             },
+//             {
+//               id: chosenItem.id
+//             }
+//           ],
+//           function(error) {
+//             if (error) throw err;
+//             console.log("Bid placed successfully!");
+//             start();
+//           }
+//         );
+
+//       else {
+//         // bid wasn't high enough, so apologize and start over
+//         console.log("Your bid was too low. Try again...");
+//         start();
+//       }
+//     });
+
+//     })
+// }
 
 start();
