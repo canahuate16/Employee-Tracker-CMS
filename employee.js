@@ -47,11 +47,11 @@ function start() {
       case "Add Employee":
         addEmployee();
         break;
-      case "Update Employee Role":
-        updateEmployeeRole();
+      case "Add Employee Role":
+        addEmployeeRole();
         break;
-      case "Update Department":
-        updateDepartment();
+      case "Add Department":
+        addDepartment();
         break;
       case "View All Employees":
         viewAllEmployees();
@@ -110,6 +110,71 @@ function addEmployee() {
       );
     });
 }
+//Add employee role
+function addEmployeeRole() {
+    inquirer
+      .prompt([
+        {
+          name: "title",
+          type: "input",
+          message: "What role are you adding?",
+        },
+        {
+          name: "salary",
+          type: "input",
+          message: "What is the salary for this role?",
+        },
+        {
+          name: "dept_id",
+          type: "type",
+          message: "What is the department ID?",
+        },
+    
+      ])
+      .then((answer) => {
+        connection.query(
+          "INSERT INTO role SET ?",
+          {
+            title: answer.title,
+            salary: answer.salary,
+            dept_id: answer.dept_id,
+            
+          },
+          function (err) {
+            if (err) throw err;
+            console.log("Role was added");
+            start();
+          }
+        );
+      });
+//add department
+
+      function addDepartment() {
+    inquirer
+      .prompt([
+        {
+          name: "dept_name",
+          type: "input",
+          message: "What is the department's name?",
+        },
+        
+    
+      ])
+      .then((answer) => {
+        connection.query(
+          "INSERT INTO department SET ?",
+          {
+            dept_name: answer.dept_name,
+            
+          },
+          function (err) {
+            if (err) throw err;
+            console.log("Department was added");
+            start();
+          }
+        );
+      });
+    
 
     // function viewAllEmployees(){
     //     connection.query ("SELECT * FROM employee", function (err,results){
