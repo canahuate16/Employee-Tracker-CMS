@@ -143,7 +143,7 @@ function addEmployeeRole() {
         {
           title: answer.title,
           salary: answer.salary,
-          dept_id: answer.dept_id,  //do I need to ask this or is this being joined from somewhere else?
+          dept_id: answer.dept_id, 
         },
         function (err) {
           if (err) throw err;
@@ -259,59 +259,5 @@ function exit() {
 
 
 
-// function viewAllEmployees(){
-//     connection.query ("SELECT * FROM employee", function (err,results){
-//         if (err) throw err;
-//         inquirer
-//         .prompt ([
-//             {
-//                 name: "employee",
-//                 type: "rawlist",
-//                 employees: function(){
-//                     var employeeArray = [];
-//                     for (let i = 0; i < results.length; i++) {
-//                          employeeArray.push( results[i].first_name);
-
-//                     }
-//                     return employeeArray;
-//                 },
-//                 message: "Select an employee"
-//             },
-//         ])
-//         .then(function(answer) {
-//             // get the information of the chosen employe
-//             let selectedEmployee;
-//             for (var i = 0; i < results.length; i++) {
-//               if (results[i].first_name === answer.employee) {
-//                 selectedEmployee = results[i];
-//               }
-//             }
-
-//         connection.query(
-//           "UPDATE employee SET ? WHERE ?",
-//           [
-//             {
-//               highest_bid: answer.bid
-//             },
-//             {
-//               id: chosenItem.id
-//             }
-//           ],
-//           function(error) {
-//             if (error) throw err;
-//             console.log("Bid placed successfully!");
-//             start();
-//           }
-//         );
-
-//       else {
-//         // bid wasn't high enough, so apologize and start over
-//         console.log("Your bid was too low. Try again...");
-//         start();
-//       }
-//     });
-
-//     })
-// }
 
 
