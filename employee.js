@@ -22,7 +22,7 @@ connection.connect(function (err) {
   // run the start function after the connection is made to prompt the user
   start();
 });
-
+//start the series of questions to the user
 function start() {
   inquirer
     .prompt({
@@ -67,7 +67,7 @@ function start() {
       }
     });
 }
-
+//adding an employee
 function addEmployee() {
   inquirer
     .prompt([
@@ -170,7 +170,7 @@ function addDepartment() {
       );
     });
 }
-
+//update employee role
 function updateRole() {
   inquirer
     .prompt([
@@ -200,6 +200,8 @@ function updateRole() {
         });
     });
 }
+
+//view all employees
 function viewAllEmployees() {
   // select from the db
   let query = "SELECT * FROM employee";
