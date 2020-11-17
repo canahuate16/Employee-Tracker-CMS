@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
+const { finished } = require("stream");
 
 // create the connection information for the sql database
 var connection = mysql.createConnection({
@@ -32,13 +33,14 @@ function start() {
       choices: [
         "View All Employees",
         "View all Employees By Department",
-        "View All Employees by Manager",
+        "View All Employees by Role",
         "Add Employee",
         "Update Employee Role",
         "Update Department",
         "Remove Employee",
         "Update Employee Role",
         "Update Employee Manager",
+        "Exit"
       ],
     }).then((choice) => {
 
@@ -56,13 +58,16 @@ function start() {
           viewAllEmployees();
           break;
         case "View all Employees By Department":
-          viewByDept();
+          viewDepartments();
           break;
-        case "View All Employees by Manager":
-          viewByManager();
+        case "View All Employees by Roles":
+          viewRoles();
           break;
         case "Update Employee Role":
           updateRole();
+          break;
+        case "Exit":
+          exit();
           break;
       }
     });
@@ -239,6 +244,17 @@ function viewRoles() {
 
   // show the result to the user (console.table)
 }
+
+function exit() {
+  connection.end;
+  process.exit();
+}
+
+
+
+
+
+
 
 // function viewAllEmployees(){
 //     connection.query ("SELECT * FROM employee", function (err,results){
