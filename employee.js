@@ -41,9 +41,7 @@ function start() {
         "Update Employee Manager",
       ],
     }).then((choice) => {
-      // if (choice.user_choice === "Add Employee") {
-      //     addEmployee();
-      // }
+
       switch (choice.user_choice) {
         case "Add Employee":
           addEmployee();
@@ -86,7 +84,7 @@ function addEmployee() {
       {
         name: "employee_role",
         type: "type",
-        message: "What is the employee's role?",
+        message: "Enter the role ID #",
       },
       {
         name: "manager_id",
@@ -173,6 +171,48 @@ function addDepartment() {
     });
 }
 
+function updateRole() {
+  inquirer
+    .prompt([
+      {
+        name: "selectEmployee",
+        type: "input",
+        message: "Which employee would you like to update?",
+
+      },
+
+      {
+        type: "input",
+        message: "What is the new role being updated?",
+        name: "updateRole"
+      }
+    ])
+    .then(function (answer) {
+      // let query = `INSERT INTO department (name) VALUES ("${answer.deptName}")`
+      //let query = `'UPDATE employee SET role_id=${answer.updateRole} WHERE first_name= ${answer.selectEmployee}`;
+      //console.log(query);
+
+      connection.query('UPDATE employee SET role_id=? WHERE first_name= ?', [answer.updateRole, answer.selectEmployee],
+        function (err, res) {
+          if (err) throw err;
+          console.table(res);
+          start();
+        });
+    });
+}
+function viewAllEmployees() {
+  // select from the db
+  let query = "SELECT * FROM employee";
+  connection.query(query, function (err, res) {
+    if (err) throw err;
+    console.table(res);
+    start();
+  });
+
+  // show the result to the user (console.table)
+}
+
+
 // function viewAllEmployees(){
 //     connection.query ("SELECT * FROM employee", function (err,results){
 //         if (err) throw err;
@@ -229,4 +269,3 @@ function addDepartment() {
 // }
 
 
-start();
