@@ -4,6 +4,7 @@
   "description": "As a business owner I want to be able to view and manage the departments, roles, and employees in my company So that I can organize and plan my business",
   "main": "employee.js",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "inquirer": "^7.3.3",
     "mysql": "^2.18.1"
   },

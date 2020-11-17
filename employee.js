@@ -1,6 +1,7 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
-const { finished } = require("stream");
+require ('dotenv').config();
+
 
 // create the connection information for the sql database
 var connection = mysql.createConnection({
@@ -13,7 +14,8 @@ var connection = mysql.createConnection({
   user: "root",
 
   // My password
-  password: "Etauhanac16",
+  password: process.env.DB_PASSWORD,
+
   database: "employee_DB",
 });
 
