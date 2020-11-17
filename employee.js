@@ -34,10 +34,11 @@ function start() {
       message: "What would you like to do?",
       choices: [
         "View All Employees",
-        "View all Employees By Department",
-        "View All Employees by Role",
+        "View All Departments",
+        "View All Roles",
         "Add Employee",
-        "Update Employee Role",
+        "Add Department",
+        "Add Role",
         "Update Department",
         "Remove Employee",
         "Update Employee Role",
@@ -50,7 +51,7 @@ function start() {
         case "Add Employee":
           addEmployee();
           break;
-        case "Add Employee Role":
+        case "Add Role":
           addEmployeeRole();
           break;
         case "Add Department":
@@ -59,10 +60,10 @@ function start() {
         case "View All Employees":
           viewAllEmployees();
           break;
-        case "View all Employees By Department":
+        case "View All Departments":
           viewDepartments();
           break;
-        case "View All Employees by Roles":
+        case "View All Roles":
           viewRoles();
           break;
         case "Update Employee Role":
@@ -93,11 +94,11 @@ function addEmployee() {
         type: "type",
         message: "Enter the role ID #",
       },
-      {
-        name: "manager_id",
-        type: "input",
-        message: "what is the employee's manager ID?",
-      },
+      // {
+      //   name: "manager_id",
+      //   type: "input",
+      //   message: "what is the employee's manager ID?",
+      // },
     ])
     .then((answer) => {
       connection.query(
@@ -106,7 +107,7 @@ function addEmployee() {
           first_name: answer.first_name,
           last_name: answer.last_name,
           role_id: answer.employee_role,
-          manager_id: answer.manager_id,
+          // manager_id: answer.manager_id,
         },
         function (err) {
           if (err) throw err;
@@ -142,7 +143,7 @@ function addEmployeeRole() {
         {
           title: answer.title,
           salary: answer.salary,
-          dept_id: answer.dept_id,
+          dept_id: answer.dept_id,  //do I need to ask this or is this being joined from somewhere else?
         },
         function (err) {
           if (err) throw err;
