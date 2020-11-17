@@ -215,6 +215,31 @@ function viewAllEmployees() {
 }
 
 
+function viewDepartments() {
+  // select from the db
+  let query = "SELECT * FROM department";
+  connection.query(query, function (err, res) {
+    if (err) throw err;
+    console.table(res);
+    start();
+  });
+
+  // show the result to the user (console.table)
+}
+
+
+function viewRoles() {
+  // select from the db
+  let query = "SELECT * FROM role";
+  connection.query(query, function (err, res) {
+    if (err) throw err;
+    console.table(res);
+    start();
+  });
+
+  // show the result to the user (console.table)
+}
+
 // function viewAllEmployees(){
 //     connection.query ("SELECT * FROM employee", function (err,results){
 //         if (err) throw err;
