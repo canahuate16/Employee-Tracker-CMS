@@ -33,16 +33,14 @@ function start() {
       type: "list",
       message: "What would you like to do?",
       choices: [
-        "View All Employees",
-        "View All Departments",
-        "View All Roles",
-        "Add Employee",
         "Add Department",
         "Add Role",
-        "Update Department",
-        "Remove Employee",
+        "Add Employee",
+        "View All Departments",
+        "View All Roles",
+        "View All Employees",
         "Update Employee Role",
-        "Update Employee Manager",
+        "Remove Employee",
         "Exit"
       ],
     }).then((choice) => {
