@@ -40,7 +40,6 @@ function start() {
         "View All Roles",
         "View All Employees",
         "Update Employee Role",
-        "Remove Employee",
         "Exit"
       ],
     }).then((choice) => {
@@ -92,11 +91,6 @@ function addEmployee() {
         type: "type",
         message: "Enter the role ID #",
       },
-      // {
-      //   name: "manager_id",
-      //   type: "input",
-      //   message: "what is the employee's manager ID?",
-      // },
     ])
     .then((answer) => {
       connection.query(
@@ -194,10 +188,6 @@ function updateRole() {
       }
     ])
     .then(function (answer) {
-      // let query = `INSERT INTO department (name) VALUES ("${answer.deptName}")`
-      //let query = `'UPDATE employee SET role_id=${answer.updateRole} WHERE first_name= ${answer.selectEmployee}`;
-      //console.log(query);
-
       connection.query('UPDATE employee SET role_id=? WHERE first_name= ?', [answer.updateRole, answer.selectEmployee],
         function (err, res) {
           if (err) throw err;
