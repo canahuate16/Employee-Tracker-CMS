@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
-require ('dotenv').config();
+require('dotenv').config();
 
 
 // create the connection information for the sql database
@@ -143,7 +143,7 @@ function addEmployeeRole() {
         {
           title: answer.title,
           salary: answer.salary,
-          dept_id: answer.dept_id, 
+          dept_id: answer.dept_id,
         },
         function (err) {
           if (err) throw err;
