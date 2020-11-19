@@ -33,12 +33,12 @@ function start() {
       type: "list",
       message: "What would you like to do?",
       choices: [
-        "View All Employees",
-        "View All Departments",
-        "View All Roles",
-        "Add Employee",
         "Add Department",
         "Add Role",
+        "Add Employee",
+        "View All Departments",
+        "View All Roles",
+        "View All Employees",
         "Update Employee Role",
         "Remove Employee",
         "Exit"
