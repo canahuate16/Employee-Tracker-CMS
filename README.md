@@ -10,6 +10,7 @@
 7. [License](#license)
 8. [Questions](#questions)
 
+C:\Users\luisc\Employee-Tracker-CMS\employee-tracker.gif
 ![node ss](https://user-images.githubusercontent.com/15930792/99613674-f46d8580-29e5-11eb-8194-a521cbabd7b0.PNG)
 ![mysql](https://user-images.githubusercontent.com/15930792/99613679-f6cfdf80-29e5-11eb-8332-afb0ae48c6da.PNG)
 
