@@ -39,10 +39,8 @@ function start() {
         "Add Employee",
         "Add Department",
         "Add Role",
-        "Update Department",
-        "Remove Employee",
         "Update Employee Role",
-        "Update Employee Manager",
+        "Remove Employee",
         "Exit"
       ],
     }).then((choice) => {
